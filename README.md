@@ -2,7 +2,7 @@
 
 **This fork includes an enhanced RNG to transform a Pico onto a true hardware RNG.**
 
-A basic random number generator that generates numbers from enviromental noise with the onboard DAC of the Raspberry Pi Pico. The project uses the Raspberry Pi Pico USB dev_lowlevel as a starting point. The Pico RNG is not meant to be FIPS 140-2 compliant as a stand-alone device by any means. However it does supply the Linux Kernel with random bits that is used with the appropriate entropy to achieve FIPS 140-2 compliant random numbers. Maybe one day the next gen Pico's will include an onboard crypto module.
+A basic random number generator that generates numbers from environmental noise with the onboard DAC of the Raspberry Pi Pico. The project uses the Raspberry Pi Pico USB dev_lowlevel example code as a starting point. The Pico RNG is not meant to be FIPS 140-2 compliant as a stand-alone device by any means. However it does supply the Linux Kernel with random bits that is used with the appropriate entropy to achieve FIPS 140-2 compliant random numbers. Maybe one day the next gen Pico's will include an onboard crypto module.
 
 ## Project Goals
 * Raspberry Pi Pico firmware generates random numbers as a USB Endpoint.
@@ -44,11 +44,11 @@ The driver can be installed from the build directory using the traditional insmo
 sudo insmod driver/pico_rng.ko [debug=1] [timeout=<msec timeout>]
 ```
 
-The Pico firmware is installed thorugh the normal process as outlined in the Raspberry Pi Pico Development Documentation.
+The Pico firmware is installed through the normal process as outlined in the Raspberry Pi Pico Development Documentation.
 
 * Unplug the Pico from the host.
 * Plug the Pico into the host while holding the 'boot' button.
-* Mount the Pico ```sudo mount /dev/sdb1 /mnt```. Note /dev/sdb1 could be different you. Use ```sudo dmesg``` to find out what device the Pico shows up as on your system.
+* Mount the Pico ```sudo mount /dev/sdb1 /mnt```. Note `/dev/sdb1` could be different for you. Use ```sudo dmesg``` to find out what device the Pico shows up as on your system.
 * Copy the uf2 file to the Pico ```sudo cp firmware/pico_rng.uf2 /mnt```.
 * Umount the pico ```sudo umount /mnt```.
 
